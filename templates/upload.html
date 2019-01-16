@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="row">
+  <div class="container">
+    <div id="main-container">
+      <form method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<input type="file" class="form-control" name="myfile" multiple>
+	<br>
+	<button type="submit" class="btn btn-primary center-block">Upload</button>
+      </form>
+      {% if files_urls_list %}
+         <h3 class="text-center">Successfully Uploaded Files</h3>
+         {% for file_url in files_urls_list %}
+            <a href="{{ file_url }}">{{ file_url }}</p>
+         {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+  
+{% endblock %}
