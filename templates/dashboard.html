@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="col-md-12">
+  <br/>
+  <b><a class="pull-left"href="{% url 'file_upload' %}">UPLOAD NEW FILES</a></b>
+  <br/>
+  <div class="container">
+    <h2 class="text-center">EXCEL WORKSHEET PROCESSOR</h2>
+    <br/>
+    <br/>
+    <table class="table">
+      <thead>
+        <th>File</th>
+        <th>Total Rows</th>
+        <th>Rows Processed</th>
+	<th>Rows Ignored</th>
+        <th>Job Description Created</th>
+      </thead>
+      <tbody>
+	{% for each in data %}
+	<tr>
+          <th>{{ each.file_name }}</th>
+          <th>{{ each.total_rows_count }}</th>
+          <th>{{ each.rows_ignored }}</th>
+          <th>{{ each.rows_processed }}</th>
+          <th>{{ each.Jobs_description_created }}</th>
+	</tr>
+	{% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
