@@ -11,6 +11,35 @@
   <body>
     {% block content %}
     {% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+      function checkCount(files) {       
+	  if(files.length>10) {
+              alert("More than 10 Files are uploaded.");
+	      document.getElementById("submitBtn").disabled = true;
+          }
+	  else
+	      document.getElementById("submitBtn").disabled = true;
+	      checkFiles(files)	  
+      }
+      function containsOnly(array1, array2){
+	  return array2.every(elem => array1.includes(elem))
+      }
+      function checkFiles(files) {
+	  ext_array = []
+	  for (var i=0; i<files.length; i++) {
+	      file_name = files[i].name;
+	      var ext = file_name.substring(file_name.lastIndexOf('.'));
+	      ext_array.push(ext)
+	  }
+	  if(containsOnly([".xls", ".xlsx"], ext_array) == false) {
+	      alert("Wrong type of Files are Selected.");
+	      document.getElementById("submitBtn").disabled = true;
+	  }
+	  else
+	      document.getElementById("submitBtn").disabled = false;
+      }
+    </script>
   </body>
 </html>

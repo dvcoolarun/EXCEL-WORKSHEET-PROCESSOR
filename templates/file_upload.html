@@ -9,17 +9,13 @@
     <div id="main-container">
       <form method="post" enctype="multipart/form-data">
 	{% csrf_token %}
-	<input type="file" class="form-control" name="myfile" accept="application/vnd.ms-excel" multiple>
-	<br>
-	<button type="submit" class="btn btn-primary center-block">Upload</button>
+	<input class="form-control" name="myfile" type="file" id="files" accept=".xls,.xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" onchange="checkCount(this.files);" multiple required>
+	<br/>
+	<input type="submit" id="submitBtn" class="btn btn-primary center-block" value="Upload">
+	<br/>
+	<p><b>**</b> UPLOAD UPTO 10 FILES, IN FORMAT XLS, XLSX</p>
+	<p><b>**</b> IF WRONG EXCEL FILES WILL BE UPLOADED, NO RESPONSE WILL BE PROVIDED.</p>
       </form>
-
-      {% if processed_data %}
-         <h3 class="text-center"></h3>
-         {% for file_url in files_urls_list %}
-            <a href="{{ file_url }}">{{ file_url }}</p>
-         {% endfor %}
-      {% endif %}
     </div>
   </div>
 </div>
