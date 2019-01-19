@@ -22,7 +22,7 @@ def ProcessData(files):
             rows_processed = 0
 
             for row_count in range(2, total_rows_count):
-                if rows_count <= 10000:
+                if row_count <= 10000:
                     for row_cells in sheet.iter_rows(min_row=row_count,
                                                      max_row=row_count):
                         row_data = []
